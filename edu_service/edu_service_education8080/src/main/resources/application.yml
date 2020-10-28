@@ -1,0 +1,20 @@
+# 服务端口
+server:
+  port: 8080
+# 服务名
+spring:
+  application:
+    name: edu_service
+# 环境配置: dev、test、prod
+  profiles:
+    active: dev
+# 数据库连接
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.3.10:3306/edu_online?useUnicode=true&&characterEncoding=utf8&&useSSL=false&&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# mybatis-plus日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
