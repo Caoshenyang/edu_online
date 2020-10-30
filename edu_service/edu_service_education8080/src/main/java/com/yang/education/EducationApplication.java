@@ -1,10 +1,11 @@
 package com.yang.education;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * @Author: csy
@@ -12,15 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description: 启动类
  */
 @SpringBootApplication
-@RestController
+@RequestMapping
+@MapperScan(basePackages = "com.yang.education")
 public class EducationApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EducationApplication.class,args);
     }
 
+    @ApiIgnore
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(){
-        return "redirct:http://localhost:8080/swagger-ui.html";
+        return "redirect:http://localhost:8080/swagger-ui.html";
     }
 }
