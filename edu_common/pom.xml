@@ -13,9 +13,15 @@
     <packaging>pom</packaging>
     <modules>
         <module>service_base</module>
+        <module>common_utils</module>
     </modules>
+    <description>公共工具，swagger2，lombok</description>
 
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <!--swagger-->
         <dependency>
             <groupId>io.springfox</groupId>

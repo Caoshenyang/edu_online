@@ -1,6 +1,7 @@
 package com.yang.education.controller;
 
 
+import com.yang.commonutils.R;
 import com.yang.education.entity.Teacher;
 import com.yang.education.service.TeacherService;
 import io.swagger.annotations.Api;
@@ -39,18 +40,18 @@ public class TeacherController {
      * @Return: java.util.List<com.yang.education.entity.Teacher>
      */
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
-    public List<Teacher> findAllTeachers() {
+    public R findAllTeachers() {
         List<Teacher> list = teacherService.list();
-        return list;
+        return R.ok().data("items", list);
     }
 
     @ApiOperation(value = "逻辑删除讲师")
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public boolean removeTeacher(
+    public R removeTeacher(
             @ApiParam(name = "id", value = "讲师Id", required = true)
             @PathVariable String id) {
         boolean b = teacherService.removeById(id);
-        return b;
+        return b ? R.ok() : R.error();
     }
 
 
