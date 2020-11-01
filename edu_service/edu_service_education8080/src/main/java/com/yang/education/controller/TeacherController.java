@@ -79,7 +79,7 @@ public class TeacherController {
             @PathVariable Long limit,
             @ApiParam(name = "teacherQuery", value = "查询条件对象", required = false)
             @RequestBody(required = false)
-            TeacherQuery teacherQuery) {
+                    TeacherQuery teacherQuery) {
         //创建page对象
         Page<Teacher> pageTeacher = new Page<>(current, limit);
         //构建条件
@@ -105,6 +105,33 @@ public class TeacherController {
         long total = pageTeacher.getTotal();
         List<Teacher> records = pageTeacher.getRecords();
         return R.ok().data("total", total).data("rows", records);
+    }
+
+    @ApiOperation(value = "新增讲师")
+    @PostMapping("addTeacher")
+    public R pageListTeachers(
+            @ApiParam(name = "teacher", value = "讲师对象", required = true)
+            @RequestBody Teacher teacher) {
+        boolean save = teacherService.save(teacher);
+        return save ? R.ok() : R.error();
+    }
+
+    @ApiOperation(value = "根据讲师Id查询")
+    @GetMapping("getTeacher/{id}")
+    public R getTeacher(
+            @ApiParam(name = "id", value = "讲师对象id", required = true)
+            @PathVariable String id) {
+        Teacher teacher = teacherService.getById(id);
+        return R.ok().data("teacher", teacher);
+    }
+
+    @ApiOperation(value = "修改讲师")
+    @PutMapping("updateTeacher")
+    public R updateTeacher(
+            @ApiParam(name = "teacher", value = "讲师对象", required = true)
+            @RequestBody Teacher teacher) {
+        boolean b = teacherService.updateById(teacher);
+        return b ? R.ok() : R.error();
     }
 
 }
