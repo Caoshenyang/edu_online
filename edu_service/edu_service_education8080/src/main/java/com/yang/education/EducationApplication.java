@@ -3,6 +3,7 @@ package com.yang.education;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import springfox.documentation.annotations.ApiIgnore;
@@ -14,7 +15,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SpringBootApplication
 @RequestMapping
-@MapperScan(basePackages = "com.yang.education")
+@ComponentScan(basePackages = "com.yang")
 public class EducationApplication {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.yang.education.config;
+package com.yang.servicebase.config;
 
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;

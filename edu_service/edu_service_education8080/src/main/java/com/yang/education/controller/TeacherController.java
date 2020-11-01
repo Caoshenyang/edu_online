@@ -3,6 +3,9 @@ package com.yang.education.controller;
 
 import com.yang.education.entity.Teacher;
 import com.yang.education.service.TeacherService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,7 @@ import java.util.List;
  * @author caoshenyang
  * @since 2020-10-29
  */
+@Api(description = "讲师管理")
 @RestController
 @RequestMapping("/education/teacher")
 public class TeacherController {
@@ -40,15 +44,11 @@ public class TeacherController {
         return list;
     }
 
-    /**
-     * @Author: csy
-     * @Date: 2020/10/29 22:08
-     * @Description: 逻辑删除讲师
-     * @Param: id 讲师id
-     * @Return: boolean
-     */
+    @ApiOperation(value = "逻辑删除讲师")
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public boolean removeTeacher(@PathVariable String id) {
+    public boolean removeTeacher(
+            @ApiParam(name = "id", value = "讲师Id", required = true)
+            @PathVariable String id) {
         boolean b = teacherService.removeById(id);
         return b;
     }

@@ -10,6 +10,7 @@
     </parent>
     <modules>
         <module>edu_service</module>
+        <module>edu_common</module>
     </modules>
 
     <groupId>com.yang</groupId>
